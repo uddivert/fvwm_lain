@@ -167,21 +167,21 @@ BusyCursor 	DynamicMenu True, Read True, Wait True
   	+ I FlipFocus   
   AddToFunc CirculateFocus
 	+ I Raise-and-FlipFocus 
-	+ I WarpToWindow !raise 5 5
+	+ I WarpToWindow !raise 5 5	
 
 # Go to 'x' Page (Focusing first not Iconified/Shaded Window)
   AddToFunc GotoPageFocus
    	+ I GotoPage $*
   	+ I PointerWindow (CurrentPage, !Sticky, !Shaded, !Iconic) Focus
    	+ I TestRc (!Match) Next (CurrentPage, !Sticky, \
-               !Shaded, !Iconic) Raise-and-Focus
+               !Shaded, !Iconic) Raise-and-Focus	       
 
 # Move 'Window' to 'x' Page, Go to $x (focusing $Window)
   AddToFunc MoveAndGotoPage
         + I MoveToPage $*
   	+ I GotoPageFocus $*   
 
-# 
+# (De)Iconify dock at will
 AddToFunc HideShowPanel
  	+ I All (StatusBar)  Iconify  
    
@@ -251,10 +251,10 @@ AddToFunc HideShowPanel
 #
 ##############################################################################
 
-#==============[Key][Context] [Mod]    [Action]
+#===============[Key]	    [Context] [Mod]    [Action]
 
 # Ctrl + Arrow scrolls by 1 page.
-  Key           Left	A	S	Scroll -100 0
+  Key           Left		A	S	Scroll -100 0
   Key           Right		A	S	Scroll +100 +0
   Key           Up      	A	S	Scroll +0   -100
   Key           Down		A	S	Scroll +0   +100
@@ -343,8 +343,8 @@ Key 		Tab 	A 	SM 	Prev (CurrentPage, !Iconic, !Shaded, \
   key XF86WWW              A N Exec exec seamonkey
   key XF86Terminal         A N Exec exec urxvtc -pe tabbed
   key XF86Go               A N Exec exec rofi -show run
-  Key XF86Mail             A N Exec exec urxvtc -e alpine
-  Key XF86HomePage         A N Exec exec xplore
+  Key XF86Mail             A N Exec exec sylpheed
+  Key XF86HomePage         A N Exec exec pcmanfm
   Key XF86Sleep            A N Exec exec acpiconf -s3 > /dev/null 2>&1
   Key XF86LogOff           A N Exec exec xscreensaver-command -lock
 
@@ -404,7 +404,6 @@ Style *   MwmDecor
 Style *	  MwmBorder
 Style *   MwmButtons
 Style *   MwmFunctions
-Style *	  CirculateSkip 
 
 # Cursors
 CursorStyle ROOT left_ptr
@@ -586,8 +585,10 @@ Style StatusBar !Maximizable, StaysOnBottom, !Borders, !Title, \
              `Exec exec wmix`)
 	    
 	    
-	 
-	 	   ##############################################################################
+
+
+
+##############################################################################
 #	     
 #                                                                             
 # Menus                                                                       
@@ -608,8 +609,8 @@ Style StatusBar !Maximizable, StaysOnBottom, !Borders, !Title, \
   	+ "&Move%mini.move1.xpm%"               Move
 	+ "&Resize%mini.resize3.xpm%"           Resize
 	+ "&Shade%mini.raise2.xpm%"             WindowShade
-	+ "&TileLeft%mini.arrowleft.xpm%"       TileLeft
-	+ "&TileRight%mini.arrowright.xpm%"     TileRight
+	+ "&TileLeft%mini.arrows.xpm%"          TileLeft
+	+ "&TileRight%mini.arrows.xpm%"         TileRight
 	+ "&Stick%mini.stick.xpm%"              Stick
 	+ ""                 Nop  
 	+ "&Close%mini.cross.xpm%"              Close
