@@ -1,2 +1,6 @@
 #!/bin/sh
-xli -onroot -fullscreen $HOME/Pictures/Wallpapers/saturn1.jpg &
+feh --bg-scale ~/Pictures/Wallpaper/lain.jpg &
+xscreensaver -no-splash &
+redshift &
+nm-applet &
+slack -u &

@@ -200,17 +200,18 @@ AddToFunc HideShowPanel
 #===========[Button][Context] [Mod]    [Action]
 
 # Root Window (Desktop):
-  Mouse	        1	R 	A	Menu RootMenu Nop	
-  Mouse	        3	R 	A       Menu Window-Ops Nop     
+  Mouse	        3	R 	A	Menu RootMenu Nop	
+  Mouse	        1	R 	A  
   Mouse 	8	R 	A       PickWindow		
 
 # TitleBar Buttons:
   Mouse 	0 	1   	A       Menu Window-Ops
-  Mouse 	1 	2   	A       Max
-  Mouse 	3 	2   	A       ThisWindow (Maximized) Maximize false
-  Mouse 	0 	2   	M       FullScreen
+  Mouse 	1 	4   	A       Max
+  Mouse 	3 	4   	A       ThisWindow (Maximized) Maximize false
+  Mouse 	0 	4   	M       FullScreen
   Mouse 	0 	3   	A       MoveLower
-  Mouse 	0 	4   	A       Iconify
+  Mouse 	0 	6   	A       Iconify
+  Mouse   0   2     A       Close
 
 
 # Borders/Icons:
@@ -254,28 +255,28 @@ AddToFunc HideShowPanel
 #===============[Key]	    [Context] [Mod]    [Action]
 
 # Ctrl + Arrow scrolls by 1 page.
-  Key           Left		A	S	Scroll -100 0
-  Key           Right		A	S	Scroll +100 +0
-  Key           Up      	A	S	Scroll +0   -100
-  Key           Down		A	S	Scroll +0   +100
+#  Key           Left		A	S	Scroll -100 0
+#  Key           Right		A	S	Scroll +100 +0
+#  Key           Up      	A	S	Scroll +0   -100
+#  Key           Down		A	S	Scroll +0   +100
 
 # Alt + Arrow scrolls by 1/10 of a page.
-  Key 		Left	A	C	Scroll -10 +0
-  Key 		Right	A	C	Scroll +10 +0
-  Key 		Up	A	C	Scroll +0  -10
-  Key 		Down	A	C	Scroll +0  +10
+#  Key 		Left	A	C	Scroll -10 +0
+#  Key 		Right	A	C	Scroll +10 +0
+#  Key 		Up	A	C	Scroll +0  -10
+#  Key 		Down	A	C	Scroll +0  +10
 
 # Shift-Control + Arrow moves the pointer by 1% of a page.
-  Key 		Left	A	SC	CursorMove -1 0
-  Key 		Right	A	SC	CursorMove +1 +0
-  Key 		Up	A	SC	CursorMove +0 -1
-  Key 		Down	A	SC	CursorMove +0 +1
+#  Key 		Left	A	SC	CursorMove -1 0
+#  Key 		Right	A	SC	CursorMove +1 +0
+#  Key 		Up	A	SC	CursorMove +0 -1
+#  Key 		Down	A	SC	CursorMove +0 +1
 
 # Shift-Alt + Arrow moves the pointer by 1/10 of a page.
-  Key 		Left	A	SM	CursorMove -10 +0
-  Key 		Right	A	SM	CursorMove +10 +0
-  Key 		Up	A	SM	CursorMove +0 -10
-  Key 		Down	A	SM	CursorMove +0 +10
+#  Key 		Left	A	SM	CursorMove -10 +0
+#  Key 		Right	A	SM	CursorMove +10 +0
+#  Key 		Up	A	SM	CursorMove +0 -10
+#  Key 		Down	A	SM	CursorMove +0 +10
 
 # Ctrl-Alt + Arrow moves windows to different pages
   Key 		Up	A	CM 	MoveToPage +0p -1p
@@ -291,22 +292,25 @@ AddToFunc HideShowPanel
 
 
 # Super + Arrow tiles window to half screen
-  Key 		Left  	A 	4 	TileLeft
-  Key 		Right 	A 	4 	TileRight
-  Key 		Up    	A 	4 	TileTop
-  Key 		Down  	A 	4 	TileBottom
+  Key 		h  	A 	4 	TileLeft
+  Key 		l  	A 	4 	TileRight
+  Key 		k    A 	4 	TileTop
+  Key 		j    A 	4 	TileBottom
 
 # Super-Shift + Arrow tiles window to screen quarter
-  Key 		Up     	A 	S4 	TileTopLeft
-  Key 		Left    A 	S4 	TileBottomLeft
-  Key 		Right   A 	S4 	TileTopRight
-  Key 		Down    A 	S4 	TileBottomRight
+  Key 		h   	A 	S4 	TileTopLeft
+  Key 		j     A 	S4 	TileBottomLeft
+  Key 		k     A 	S4 	TileTopRight
+  Key 		l     A 	S4 	TileBottomRight
 
 # Ctrl-Super + Arrow resizes window by 10 lines 
-  Key 		Left  	A 	C4 	DecHorizontalSize
-  Key 		Right 	A 	C4 	IncHorizontalSize
-  Key 		Up    	A 	C4 	DecVerticalSize
-  Key 		Down  	A 	C4 	IncVerticalSize
+  Key 		h   	A 	C4 	DecHorizontalSize
+  Key 		l   	A 	C4 	IncHorizontalSize
+  Key 		j   	A 	C4 	DecVerticalSize
+  Key 		k   	A 	C4 	IncVerticalSize
+
+# Misc
+  Key 		Space   A 	M 	 exec rofi -show drun
 
 
 # Alt + Tab Cycles between windows 
@@ -316,7 +320,7 @@ Key 		Tab 	A 	SM 	Prev (CurrentPage, !Iconic, !Shaded, \
 					 AcceptsFocus) CirculateFocus
 
 # Function Keys bindings
-  Key 		F1	A	N	PickWindow
+#  Key 		F1	A	N	PickWindow
   Key 		F2	A	N	Popup Window-Ops
   Key 		F3	A	N	Popup Applications
   Key 		F4	A	N	Iconify
@@ -341,7 +345,7 @@ Key 		Tab 	A 	SM 	Prev (CurrentPage, !Iconic, !Shaded, \
   Key XF86AudioPrev        A N Exec exec mpc prev > /dev/null 2>&1
   Key XF86AudioNext        A N Exec exec mpc next > /dev/null 2>&1
   key XF86WWW              A N Exec exec seamonkey
-  key XF86Terminal         A N Exec exec urxvtc -pe tabbed
+  key XF86Terminal         A N Exec exec st 
   key XF86Go               A N Exec exec rofi -show run
   Key XF86Mail             A N Exec exec sylpheed
   Key XF86HomePage         A N Exec exec pcmanfm
@@ -520,7 +524,7 @@ Style * IconFont "xft:Terminus\ (TTF):medium:antialias=true:size=9"
 Style * StickyIcon, !StickyStippledIconTitle
 
 
-Style URxvt 	!Title, IconOverride, Icon next_term.xpm 
+Style URxvt 	IconOverride, Icon next_term.xpm 
 Style SeaMonkey 	IconOverride, Icon WWW.xpm
 Style Xpdf 		IconOverride, Icon pdf.png
 Style NEdit 		IconOverride, Icon editor.png
@@ -566,23 +570,26 @@ Style StatusBar !Maximizable, StaysOnBottom, !Borders, !Title, \
 *StatusBar: (Size 2x1, Padding 2, Frame 2, \
              Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) FvwmPager
 *StatusBar: (Size 3x1, Padding 2, Frame 2, \
-             Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "xosview" \
-             `Exec exec xosview`)	     
+             Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "xosview2" \
+             `Exec exec xosview2`)
 *StatusBar: (Size 1x1, Padding 2, Frame 2, \
              Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "asclock" \
              `Exec exec asclock -12 -l "#f77bf7"`)
 *StatusBar: (Size 1x1, Padding 2, Frame 2, \
-             Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "wmweather+" \
-             `Exec exec wmweather+`)
+             Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "wmSolar" \
+             `Exec exec wmSolar`)
 *StatusBar: (Size 1x1, Padding 2, Frame 2, \
-            Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "WMmp" \
-             `Exec exec WMmp`)
-*StatusBar: (Size 1x1, Padding 2, Frame 2,  \
-             Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "wmrecord" \
-             `Exec exec wmrecord`)	     
+            Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "wmbattery" \
+             `Exec exec wmbattery`)
 *StatusBar: (Size 1x1, Padding 2, Frame 2,  \
              Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "wmix" \
-             `Exec exec wmix`)
+             `Exec exec wmix`)	     
+*StatusBar: (Size 1x1, Padding 2, Frame 2,  \
+             Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "stalonetray" \
+             `Exec exec stalonetray`)
+#*StatusBar: (Size 1x1, Padding 2, Frame 2,  \
+#            Swallow(UseOld, NoClose, NoHints, Respawn, NoTitle) "wmnd" \
+#            `Exec exec wmnd`)
 	    
 	    
 
@@ -598,7 +605,7 @@ Style StatusBar !Maximizable, StaysOnBottom, !Borders, !Title, \
 
 # Main Menu
   AddToMenu RootMenu "Fvwm Menu" Title
-	+ "&Terminal%mini.term.xpm%"		Exec exec urxvtc -pe tabbed
+	+ "&Terminal%mini.term.xpm%"		Exec exec st
 	+ "&Launcher%mini.run2.xpm%"         	Exec exec rofi -show run 
 	+ "&Applications%daemon.xpm%"     	Popup Applications
 	+ ""                  Nop
@@ -701,7 +708,7 @@ Style StatusBar !Maximizable, StaysOnBottom, !Borders, !Title, \
   AddtoMenu Terminal
 	+ "Xterm%mini.xterm1.xpm%" 		Exec exec xterm
 	+ "RXvt%mini.term.xpm%"  		Exec exec urxvt -pe tabbed
-	+ "Eterm%mini.term2.xpm%" 		Exec exec Eterm
+	+ "st%mini.term2.xpm%" 		Exec exec st
 
   AddtoMenu Multimedia
 	+ "EasyTag%mini.info.xpm%" 		Exec exec easytag
@@ -779,6 +786,7 @@ Style StatusBar !Maximizable, StaysOnBottom, !Borders, !Title, \
 	                                                     xscreensaver-demo
 	+ "Preferred Applications%mini.applications.xpm%" Exec exec \
 	                                            exo-preferred-applications
+  + "Fvwm&Console%mini.xterm1.xpm%"Module FvwmConsole -terminal urxvt
 
 
 
